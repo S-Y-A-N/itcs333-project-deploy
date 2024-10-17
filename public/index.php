@@ -16,13 +16,17 @@ spl_autoload_register(function ($class) {
 
 });
 
+
+
 // create router object
 $router = new \Core\Router();
 
-// get the routes from the file
+// get the routes from the file (still no routes file)
 $routes = require base_path('routes.php');
 
-// hm
+// get 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+dd($_SERVER);
+$router->get($uri, 'controllers/index.php');
 
-dd($_SERVER['REQUEST_URI']);
+$router->route($uri, 'GET');
