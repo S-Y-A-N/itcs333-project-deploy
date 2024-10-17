@@ -28,4 +28,9 @@ class Validator {
     return false;
 
   }
+
+  public static function password($value) {
+    // TODO -- Validate password to meet requirements
+
+  }
 }

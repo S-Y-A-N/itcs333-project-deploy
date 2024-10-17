@@ -1,8 +1,6 @@
 <?php
 
-return [
-  '/' => 'controllers/index.php',
-  '/login'=> 'controllers/login.php',
-  '/register'=> 'controllers/register.php',
-  '/home'=> 'controllers/home.php',
-];
+$router->get('/', 'controllers/index.php');
+$router->get('/login', 'controllers/login.php');
+$router->get('/register', 'controllers/register.php');
+$router->get('/home', 'controllers/home.php');

@@ -1,7 +1,7 @@
 <?php require 'partials/head.php'; ?>
 
-<main>
-  <div class="">
+<main class="container">
+  <div class="form">
       <form method="POST">
 
       </form>
