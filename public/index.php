@@ -28,5 +28,6 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 var_dump("uri: $uri");
 var_dump("method: $method");
+var_dump($_POST);
 
 $router->route($uri, $method);
