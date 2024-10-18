@@ -15,7 +15,7 @@ class Validator {
     if (Validator::email($value)) {
 
       // validate that it is uob email
-      $pattern = '/^@uob.edu.bh$|^@stu.uob.edu.bh$/';
+      $pattern = '/(^\w*@stu\.uob\.edu\.bh$)|(^\w*@uob\.edu\.bh$)/';
 
       return preg_match($pattern, $value) ? true : false;
     }

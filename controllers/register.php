@@ -15,6 +15,14 @@ $invalid = true;
 
 // here we add all the register logic and validation
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $emailQuery = $db->query('SELECT email FROM users WHERE email = :email', [
+    'email' => $_POST['email']
+  ]);
+  // if email exists in db
+  if ($emailQuery->rowCount() > 0) {
+    var_dump($emailQuery);
+    $errors['message'] = 'You are already registered';
+  }
 
   // if not a uob email
   if (! Validator::uobEmail($_POST['email'])) {

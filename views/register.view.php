@@ -2,12 +2,20 @@
 <?php require 'partials/header.php'; ?>
 
 <div class="form">
-  <form action="" enctype="multipart/form-data" method="POST">
-    <input type="email" id="email" name="email" placeholder="UOB Email" aria-invalid="<?= $invalid ?>" required>
-    <?php if (isset($errors['email'])) : ?>
-      <p><?= $errors['email'] ?></p>
+  <form enctype="multipart/form-data" method="POST">
+
+    <?php if (isset($errors['message'])) : ?>
+      <p class="error"><?= $errors['message'] ?></p>
     <?php endif ?>
+
+    <input type="email" id="email" name="email" placeholder="UOB Email" aria-invalid="<?= $invalid ?>" required>
+
+    <?php if (isset($errors['email'])) : ?>
+      <p class="error"><?= $errors['email'] ?></p>
+    <?php endif ?>
+
     <input type="password" id="password" name="password" placeholder="Password">
+
     <button type="submit">Submit</button>
   </form>
 </div>

@@ -24,3 +24,7 @@ header {
   width: 100%;
   padding: var(--pico-form-element-spacing-vertical) var(--pico-form-element-spacing-horizontal);
 }
+
+p.error {
+  color: var(--wh-red-900);
+}
