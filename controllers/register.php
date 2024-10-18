@@ -29,4 +29,7 @@ use Core\Validator;
 //   }
 // }
 
-view('register.view.php');
+view('register.view.php', [
+  'h1' => 'Register',
+  'p'=> 'To create a new account',
+]);

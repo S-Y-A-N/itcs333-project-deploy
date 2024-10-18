@@ -3,5 +3,5 @@ A responsive web-based room booking system for the IT College, done as per the [
 ## Live Preview
 [Currently Unavailable]()
 ## Built With
-* HTML/CSS/JS
+* HTML, CSS, JS
 * PHP

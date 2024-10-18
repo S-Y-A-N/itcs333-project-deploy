@@ -15,4 +15,7 @@ use Core\Validator;
 //   }
 // }
 
-view('login.view.php');
+view('login.view.php', [
+  'h1' => 'Login',
+  'p'=> 'If you are already registered',
+]);

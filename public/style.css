@@ -1,0 +1,26 @@
+header {
+  margin-top: 1.5rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Theme button */
+[role="button"].secondary {
+  padding: 0.2rem 0.6rem;
+}
+
+/* Register & Login buttons  */
+[role="button"] {
+  padding: 0;
+}
+
+[role="button"] a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  width: 100%;
+  padding: var(--pico-form-element-spacing-vertical) var(--pico-form-element-spacing-horizontal);
+}
