@@ -28,3 +28,7 @@ header {
 p.error {
   color: var(--wh-red-900);
 }
+
+p.success {
+  color: var(--wh-blue-500);
+}
