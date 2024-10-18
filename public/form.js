@@ -1,4 +1,4 @@
-// TODO - Dynamic form validation
+// (Work in Progress) - Dynamic form validation
 
 /*
 const register_form = document.getElementById('register_form');
