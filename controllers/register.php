@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // if weak password
-    if (! Validator::strongPassword($_POST['password'])) {
+    if (! Validator::passwordStrong($_POST['password'])) {
       $errors['password'] = 'Your password must be at least 8 characters long, and include at least one uppercase letter, one lowercase letter, one number, and one special character';
     }
 

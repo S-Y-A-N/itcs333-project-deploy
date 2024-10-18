@@ -24,8 +24,7 @@ class Validator {
 
   }
 
-  public static function strongPassword($value) {
-    // TODO -- Validate password to meet requirements
+  public static function passwordStrong($value) {
     $uppercase = preg_match('/[A-Z]/', $value);
     $lowercase = preg_match('/[a-z]/', $value);
     $number    = preg_match('/[0-9]/', $value);
@@ -33,5 +32,10 @@ class Validator {
     $length = preg_match('/\S{8,}/', $value);
 
     return $uppercase && $lowercase && $number && $specialChar && $length ? true : false;
+  }
+
+  // TODO - implement validation for matching two passwords
+  public static function passwordMatch($p1, $p2) {
+
   }
 }
