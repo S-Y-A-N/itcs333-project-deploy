@@ -53,13 +53,16 @@ class Router
 
   public function route($uri, $method)
   {
+    // loop over routes to require the correct controller file
     foreach ($this->routes as $route) {
       if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
         require base_path($route['controller']);
+        return true;
       }
     }
 
     $this->abort();
+    return false;
   }
 
   protected function abort($code = 404)

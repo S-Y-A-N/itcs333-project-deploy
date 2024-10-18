@@ -17,12 +17,7 @@ class Validator {
       // validate that it is uob email
       $pattern = '/^@uob.edu.bh$|^@stu.uob.edu.bh$/';
 
-      if (preg_match($pattern, $value)) {
-        return true;
-      } else {
-        return false;
-      }
-
+      return preg_match($pattern, $value) ? true : false;
     }
 
     return false;

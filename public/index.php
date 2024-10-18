@@ -26,4 +26,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
+var_dump("uri: $uri");
+var_dump("method: $method");
+
 $router->route($uri, $method);

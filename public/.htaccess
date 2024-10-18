@@ -14,3 +14,6 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# Display errors
+php_flag display_errors 1
