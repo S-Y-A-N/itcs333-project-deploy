@@ -16,8 +16,43 @@ $invalid = true;
 
 // TODO - here we add all the login logic and validation
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  if (! Validator::uobEmail($email)) {
 
+  // query to find email in db
+  $emailQuery = $db->query('SELECT * FROM users WHERE email = :email', [
+    'email' => $_POST['email']
+  ]);
+
+  // if email does not exist in db
+  if ($emailQuery->rowCount() === 0) {
+
+    $errors['message'] = 'You have entered an invalid email or password';
+    $invalid = false;
+
+  } else {
+
+    // get password from db
+    $password = $emailQuery->fetch()['password'];
+
+    // verify the entered password with hashed password
+    if (password_verify($_POST['password'], $password)) {
+
+      // successful login, start session
+      $_SESSION['email'] = $email;
+      header('Location: /home');
+
+    } else {
+      $errors['message'] = 'You have entered an invalid email or password';
+      $invalid = false;
+    }
+    
+  }
+
+  // if no errors, login successful
+  if (empty($errors)) {
+
+    
+
+    $invalid = false;
   }
 }
 
@@ -26,4 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 view('login.view.php', [
   'h1' => 'Login',
   'p'=> 'If you are already registered',
+  'errors' => $errors,
+  'invalid' => $invalid
 ]);

@@ -36,6 +36,6 @@ class Validator {
 
   // TODO - implement validation for matching two passwords
   public static function passwordMatch($p1, $p2) {
-
+    return $p1 === $p2;
   }
 }
