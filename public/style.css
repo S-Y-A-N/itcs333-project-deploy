@@ -7,6 +7,22 @@ header {
   flex-wrap: wrap;
 }
 
+/* Layout */
+.flex-row,
+.flex-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-wrap: wrap;
+}
+
 /* Theme button */
 [role="button"].secondary {
   padding: 0.2rem 0.6rem;
@@ -25,10 +41,15 @@ header {
   padding: var(--pico-form-element-spacing-vertical) var(--pico-form-element-spacing-horizontal);
 }
 
-p.error {
-  color: var(--wh-red-900);
+.error {
+  color: var(--wh-red-800);
 }
 
-p.success {
+.success {
   color: var(--wh-blue-500);
+}
+
+article {
+  text-align: center;
+  width: fit-content;
 }

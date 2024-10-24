@@ -9,21 +9,21 @@
     <?php endif ?>
 
 
-    <input type="email" id="email" name="email" placeholder="UOB Email" value="<?= $_POST['email'] ?? '' ?>" aria-invalid="<?= isset($errors['email']) ? 'true' : 'none' ?>" required>
+    <input type="email" id="email" name="email" placeholder="UOB Email" aria-describedby="email-helper" value="<?= $_POST['email'] ?? '' ?>" aria-invalid="<?= isset($errors['email']) ? 'true' : 'none' ?>" required>
 
     
     <?php if (isset($errors['email'])) : ?>
-      <p class="error"><?= $errors['email'] ?></p>
+      <small class="error" id="email-helper"><?= $errors['email'] ?></small>
     <?php endif ?>
 
 
-    <input type="password" id="password" name="password" value="<?= $_POST['password'] ?? '' ?>" aria-invalid="<?= isset($errors['password']) ? 'true' : 'none' ?>" placeholder="Password" required>
+    <input type="password" id="password" name="password" aria-describedby="password-helper" value="<?= $_POST['password'] ?? '' ?>" aria-invalid="<?= isset($errors['password']) ? 'true' : 'none' ?>" placeholder="Password" required>
 
-    <input type="password" id="password2" name="password2" value="<?= $_POST['password2'] ?? '' ?>" aria-invalid="<?= isset($errors['password']) ? 'true' : 'none' ?>" placeholder="Repeat Password" required>
+    <input type="password" id="password2" name="password2" aria-describedby="password-helper" value="<?= $_POST['password2'] ?? '' ?>" aria-invalid="<?= isset($errors['password']) ? 'true' : 'none' ?>" placeholder="Repeat Password" required>
 
 
     <?php if (isset($errors['password'])) : ?>
-      <p class="error"><?= $errors['password'] ?></p>
+      <small class="error" id="password-helper"><?= $errors['password'] ?></small>
     <?php endif ?>
 
     <button type="submit">Submit</button>
