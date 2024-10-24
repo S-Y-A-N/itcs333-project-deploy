@@ -14,9 +14,6 @@ $db = new Database($config['database']);
 // array for error messages
 $errors = [];
 
-// only used inside view.php for aria-invalid attribute
-$invalid = true;
-
 
 // TODO - here we add all the register logic and validation
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,18 +27,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($emailQuery->rowCount() > 0) {
 
     $errors['message'] = 'You already have an account, please login instead';
-    $invalid = false;
 
   } else {
 
     // if not a uob email
-    if (! Validator::uobEmail($_POST['email'])) {
+    if (! Validator::uob_email($_POST['email'])) {
       $errors['email'] = 'Please use your university email';
     }
 
     // if weak password
-    if (! Validator::passwordStrong($_POST['password'])) {
+    else if (! Validator::password_strong($_POST['password'])) {
       $errors['password'] = 'Your password must be at least 8 characters long, and include at least one uppercase letter, one lowercase letter, one number, and one special character';
+    }
+
+    // if passwords do not match
+    else if (! Validator::password_match($_POST['password'], $_POST['password2'])) {
+      $errors['password'] = 'Your passwords do not match';
     }
 
   }
@@ -55,16 +56,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
     ]);
 
-    $invalid = false;
+
+    $errors['message'] = 'Regestration successful';
+
   }
 }
-
-$invalid = $invalid ? 'true' : 'false';
 
 // open register.view.php
 view('register.view.php', [
   'h1' => 'Register',
   'p'=> 'To create a new account',
-  'errors' => $errors,
-  'invalid' => $invalid
+  'errors' => $errors
 ]);

@@ -26,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($emailQuery->rowCount() === 0) {
 
     $errors['message'] = 'You have entered an invalid email or password';
-    $invalid = false;
 
   } else {
 
@@ -42,17 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     } else {
       $errors['message'] = 'You have entered an invalid email or password';
-      $invalid = false;
     }
     
-  }
-
-  // if no errors, login successful
-  if (empty($errors)) {
-
-    
-
-    $invalid = false;
   }
 }
 

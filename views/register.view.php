@@ -4,22 +4,23 @@
 <div class="form">
   <form id="register_form" enctype="multipart/form-data" method="POST">
 
-    <?php if ($invalid == 'false' && !isset($errors['message'])) : ?>
-      <p class="success">Regestration successful</p>
-    <?php endif; ?>
-
     <?php if (isset($errors['message'])) : ?>
       <p class="success"><?= $errors['message'] ?></p>
     <?php endif ?>
 
 
-    <input type="email" id="email" name="email" placeholder="UOB Email" value="<?= $_POST['email'] ?? '' ?>" aria-invalid="<?= $invalid ?>" required>
+    <input type="email" id="email" name="email" placeholder="UOB Email" value="<?= $_POST['email'] ?? '' ?>" aria-invalid="<?= isset($errors['email']) ? 'true' : 'none' ?>" required>
 
+    
     <?php if (isset($errors['email'])) : ?>
       <p class="error"><?= $errors['email'] ?></p>
     <?php endif ?>
 
-    <input type="password" id="password" name="password" value="<?= $_POST['password'] ?? '' ?>" aria-invalid="<?= $invalid ?>" placeholder="Password" required>
+
+    <input type="password" id="password" name="password" value="<?= $_POST['password'] ?? '' ?>" aria-invalid="<?= isset($errors['password']) ? 'true' : 'none' ?>" placeholder="Password" required>
+
+    <input type="password" id="password2" name="password2" value="<?= $_POST['password2'] ?? '' ?>" aria-invalid="<?= isset($errors['password']) ? 'true' : 'none' ?>" placeholder="Repeat Password" required>
+
 
     <?php if (isset($errors['password'])) : ?>
       <p class="error"><?= $errors['password'] ?></p>

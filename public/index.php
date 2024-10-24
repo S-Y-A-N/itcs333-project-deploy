@@ -31,14 +31,17 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 dump("uri: $uri");
 dump("method: $method");
 
+// Start Session
 session_start();
 
-dump($_SESSION);
-dump(base_path('home'));
+echo 'SESSION';
 
-if (isset($_SESSION['email']) && $uri !== '/home') {
-  header("Location: /home");
-}
+dump($_SESSION);
 
 // go to controller of the current uri, for example: if the url is '/' it goes to 'controllers/index.php'
 $router->route($uri, $method);
+
+// go to user home if there is a session
+if ( isset($_SESSION['email']) && $uri !== '/home' ) {
+  header("Location: /home");
+}

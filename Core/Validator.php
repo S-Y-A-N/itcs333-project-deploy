@@ -9,7 +9,7 @@ class Validator {
     return filter_var($value, FILTER_VALIDATE_EMAIL);
   }
 
-  public static function uobEmail($value) {
+  public static function uob_email($value) {
 
     // validate it is an email
     if (Validator::email($value)) {
@@ -24,7 +24,7 @@ class Validator {
 
   }
 
-  public static function passwordStrong($value) {
+  public static function password_strong($value) {
     $uppercase = preg_match('/[A-Z]/', $value);
     $lowercase = preg_match('/[a-z]/', $value);
     $number    = preg_match('/[0-9]/', $value);
@@ -34,7 +34,7 @@ class Validator {
     return $uppercase && $lowercase && $number && $specialChar && $length ? true : false;
   }
 
-  public static function passwordMatch($p1, $p2) {
+  public static function password_match($p1, $p2) {
     return $p1 === $p2;
   }
 }
