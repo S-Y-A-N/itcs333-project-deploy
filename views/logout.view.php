@@ -2,9 +2,9 @@
 <?php require 'partials/header.php'; ?>
 
 <main>
-	<p>Book S40 Rooms...</p>
+	<p>You have been logged out successfully</p>
   <p>
-    <a href="/logout">Log out</a>
+    <a href="/">Return to home</a>
   </p>
 </main>
 

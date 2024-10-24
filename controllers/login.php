@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (password_verify($_POST['password'], $password)) {
 
       // successful login, start session
-      $_SESSION['email'] = $email;
+      $_SESSION['email'] = $_POST['email'];
       header('Location: /home');
 
     } else {

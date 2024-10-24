@@ -26,8 +26,19 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
+
+
 dump("uri: $uri");
 dump("method: $method");
+
+session_start();
+
+dump($_SESSION);
+dump(base_path('home'));
+
+if (isset($_SESSION['email']) && $uri !== '/home') {
+  header("Location: /home");
+}
 
 // go to controller of the current uri, for example: if the url is '/' it goes to 'controllers/index.php'
 $router->route($uri, $method);
