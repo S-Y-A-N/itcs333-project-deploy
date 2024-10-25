@@ -21,17 +21,17 @@
     <div class="flex-row">
       <article>
         <h3>Information Systems</h3>
-        <img src="https://placehold.co/400x300" alt="">
+        <img src="https://placehold.co/400x300/960000/white" alt="">
       </article>
 
       <article >
         <h3>Computer Science</h3>
-        <img src="https://placehold.co/400x300" alt="">
+        <img src="https://placehold.co/400x300/ffbb00/292929" alt="">
       </article>
 
       <article >
         <h3>Computer Engineering</h3>
-        <img src="https://placehold.co/400x300" alt="">
+        <img src="https://placehold.co/400x300/12206b/white" alt="">
       </article>
     </div>
 

@@ -53,3 +53,7 @@ article {
   text-align: center;
   width: fit-content;
 }
+
+fieldset[role=group] {
+  box-shadow: none;
+}

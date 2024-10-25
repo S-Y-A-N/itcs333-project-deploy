@@ -19,7 +19,7 @@
 
     <input type="password" id="password" name="password" aria-describedby="password-helper" value="<?= $_POST['password'] ?? '' ?>" aria-invalid="<?= isset($errors['password']) ? 'true' : 'none' ?>" placeholder="Password" required>
 
-    <input type="password" id="password2" name="password2" aria-describedby="password-helper" value="<?= $_POST['password2'] ?? '' ?>" aria-invalid="<?= isset($errors['password']) ? 'true' : 'none' ?>" placeholder="Repeat Password" required>
+    <input type="password" id="password2" name="password2" aria-describedby="password-helper" value="<?= $_POST['password2'] ?? '' ?>" aria-invalid="<?= isset($errors['password']) ? 'true' : 'none' ?>" placeholder="Confirm Password" required>
 
 
     <?php if (isset($errors['password'])) : ?>
