@@ -2,7 +2,6 @@
 <?php
 
 use Core\Database;
-use Core\Validator;
 
 // create database connection
 $config = require base_path('config.php');

@@ -1,16 +1,15 @@
 <?php require 'partials/head.php'; ?>
-<?php require 'partials/protected_header.php'; ?>
+<?php require 'partials/protected-header.php'; ?>
+<?php require 'partials/search-bar.php'; ?>
 
 <br>
 
+
+
 <main>
-  <section>
-    <form id="search_form" method="GET">
-      <fieldset role="group">
-        <input type="search" id="search" name="search" placeholder="Looking for a specific room?" />
-        <button type="submit" style="border-radius: 0 5rem 5rem 0;">Search</button>
-      </fieldset>
-    </form>
+
+<section>
+<a href="/rooms">Browse all rooms</a>
 </section>
 
 <br>
@@ -19,20 +18,28 @@
     <h2>Departments</h2>
 
     <div class="flex-row">
-      <article>
-        <h3>Information Systems</h3>
-        <img src="https://placehold.co/400x300/960000/white" alt="">
-      </article>
+      <a href="rooms/is">
+        <article>
+          <h3>Information Systems</h3>
+          <img src="https://placehold.co/400x300/960000/white?text=IS" alt="">
+        </article>
+      </a>
 
-      <article >
-        <h3>Computer Science</h3>
-        <img src="https://placehold.co/400x300/ffbb00/292929" alt="">
-      </article>
+      <a href="rooms/cs">
+        <article >
+          <h3>Computer Science</h3>
+          <img src="https://placehold.co/400x300/ffbb00/292929?text=CS" alt="">
+        </article>
+      </a>
 
-      <article >
-        <h3>Computer Engineering</h3>
-        <img src="https://placehold.co/400x300/12206b/white" alt="">
-      </article>
+
+      <a href="rooms/ce">
+        <article >
+          <h3>Computer Engineering</h3>
+          <img src="https://placehold.co/400x300/12206b/white?text=CE" alt="">
+        </article>
+      </a>
+
     </div>
 
   </section>

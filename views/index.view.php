@@ -1,5 +1,7 @@
 <?php require 'partials/head.php'; ?>
 <?php require 'partials/header.php'; ?>
+<?php require base_path('views/partials/search-bar.php'); ?>
+
 
 <main>
 	<div role="group">

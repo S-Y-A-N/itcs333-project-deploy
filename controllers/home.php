@@ -1,8 +1,6 @@
 <?php
 
-if (! isset($_SESSION['email'])) {
-  header('Location: /logout');
-}
+authorize(isset($_SESSION['email']));
 
 view('home.view.php', [
   'h1' => 'Home',

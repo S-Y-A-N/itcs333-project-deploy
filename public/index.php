@@ -42,6 +42,6 @@ dump($_SESSION);
 $router->route($uri, $method);
 
 // go to user home if there is a session
-if ( isset($_SESSION['email']) && $uri !== '/home' ) {
+if ( isset($_SESSION['email']) && $uri === '/' ) {
   header("Location: /home");
 }
