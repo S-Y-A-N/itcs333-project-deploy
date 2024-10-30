@@ -17,7 +17,7 @@
 <section class="flex-col">
     <h2>Departments</h2>
 
-    <div class="flex-row">
+    <div class="flex-row wrap">
       <a href="rooms/is">
         <article>
           <h3>Information Systems</h3>

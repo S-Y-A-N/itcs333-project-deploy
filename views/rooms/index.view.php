@@ -13,12 +13,8 @@
     <?php foreach ($rooms as $room) : ?>
       <a href="/room?id=<?= $room['room_id'] ?>">
         <article>
-          <h4>
-            <?= $room['type'] . " " . $room['room_id'] ?>
-          </h4>
-          <h5>
-            <?= $room['dept'] ?>
-          </h5>
+            <h4> <?= ucfirst($room['type']) ?> </h4>
+            <h5> <?= "S40-" . strtoupper($room['room_id']) ?> </h5>
         </article>
       </a>
     <?php endforeach; ?>

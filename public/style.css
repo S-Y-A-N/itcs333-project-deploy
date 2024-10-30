@@ -19,7 +19,7 @@ header {
   flex-direction: column;
 }
 
-.flex-row {
+.wrap {
   flex-wrap: wrap;
 }
 
@@ -54,6 +54,14 @@ article {
   width: 100%;
 }
 
+a {
+  --pico-text-decoration: none;
+}
+
 fieldset[role=group] {
   box-shadow: none;
+}
+
+.room .info {
+  margin-top: 1rem;
 }

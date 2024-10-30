@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 27, 2024 at 10:43 PM
+-- Generation Time: Oct 30, 2024 at 02:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,17 +31,18 @@ CREATE TABLE `s40_rooms` (
   `room_id` int(11) NOT NULL,
   `room_name` varchar(256) DEFAULT NULL,
   `type` enum('classroom','lab') NOT NULL,
-  `dept` enum('is','cs','ce') NOT NULL
+  `dept` enum('is','cs','ce') NOT NULL,
+  `capacity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `s40_rooms`
 --
 
-INSERT INTO `s40_rooms` (`room_id`, `room_name`, `type`, `dept`) VALUES
-(1020, NULL, 'classroom', 'is'),
-(1048, NULL, 'lab', 'cs'),
-(1080, NULL, 'classroom', 'ce');
+INSERT INTO `s40_rooms` (`room_id`, `room_name`, `type`, `dept`, `capacity`) VALUES
+(1020, NULL, 'classroom', 'is', 40),
+(1048, NULL, 'lab', 'cs', 40),
+(1080, NULL, 'classroom', 'ce', 40);
 
 -- --------------------------------------------------------
 
