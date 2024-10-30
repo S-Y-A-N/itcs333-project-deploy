@@ -16,4 +16,4 @@
 </IfModule>
 
 # Display errors
-php_flag display_errors 1
+# php_flag display_errors 1
