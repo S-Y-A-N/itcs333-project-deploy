@@ -11,10 +11,10 @@ class Validator {
 
   public static function uob_email($value) {
 
-    // validate it is an email
+    // 1- validate that it is an email
     if (Validator::email($value)) {
 
-      // validate that it is uob email
+      // 2- validate that it is a UOB email
       $pattern = '/(^\w*@stu\.uob\.edu\.bh$)|(^\w*@uob\.edu\.bh$)/';
 
       return preg_match($pattern, $value) ? true : false;

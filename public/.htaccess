@@ -15,5 +15,5 @@
     RewriteRule ^ index.php [L]
 </IfModule>
 
-# Display errors
-# php_flag display_errors 1
+# Display errors on screen
+php_flag display_errors 1
