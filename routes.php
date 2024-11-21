@@ -16,6 +16,9 @@ $router->get('/rooms/ce', 'controllers/rooms/index.php');
 // Show details for a single room
 $router->get('/room', 'controllers/rooms/show.php');
 
+// Profile page
+$router->get('/profile', 'controllers/profile.php');
+
 // Post Requests
 $router->post('/login', 'controllers/login.php');
 $router->post('/register', 'controllers/register.php');

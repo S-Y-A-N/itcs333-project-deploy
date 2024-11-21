@@ -65,3 +65,9 @@ fieldset[role=group] {
 .room .info {
   margin-top: 1rem;
 }
+
+#blue-bar {
+  height: 50px;
+  background-color: #405d9b;
+  color: #d9dfeb;
+}
