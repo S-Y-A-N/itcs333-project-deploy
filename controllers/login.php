@@ -36,7 +36,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       // successful login, start session
       $_SESSION['email'] = $_POST['email'];
-      header('Location: /home');
+
+      // user type: admin or normal
+      $is_admin = (int) $emailQuery->fetch()['admin'];
+      $_SESSION['admin'] = $is_admin;
+
+      if ($_SESSION['admin'] === 0) {
+        header('Location: /home');
+      } else {
+        // TODO admin page
+        header('Location: ???');
+      }
 
     } else {
       $errors['message'] = 'You have entered an invalid email or password';

@@ -22,3 +22,4 @@ $router->get('/profile', 'controllers/profile.php');
 // Post Requests
 $router->post('/login', 'controllers/login.php');
 $router->post('/register', 'controllers/register.php');
+$router->post("/room", 'controllers/booking/book_room.php');

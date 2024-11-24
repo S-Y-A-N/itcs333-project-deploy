@@ -4,6 +4,7 @@
 
 <main>
   <section class="room">
+  <form method="post">
     <div style="height: 400px;" id="panorama"></div>
 
     <div class="info">
@@ -25,24 +26,17 @@
           <td> <?= '...' ?> </td>
         </tr>
         <tr>
-          <td>Timeslots</td>
+          <td>Book Room</td>
           <td>
-            <select name="date" id="date">
-              <option value="0" disabled selected>Date</option>
-              <option value="1">Monday &mdash; 30 Oct 2024</option>
-            </select>
-
-            <select disabled name="time" id="time">
-              <option value="0" disabled selected>Time</option>
-              <option value="1">10 AM</option>
-              <option value="2">12 PM</option>
-            </select>
+            <input type="datetime-local" id="booking_time" name="booking_time" required>
           </td>
         </tr>
       </table>
     </div>
 
-    <button disabled type="submit">Book Room</button>
+    <button type="submit">Book Room</button>
+  </form>
+
   </section>
 </main>
 
