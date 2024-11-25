@@ -8,10 +8,10 @@ $config = require base_path('config.php');
 $db = new Database($config['database']);
 
 // $conn = connectDB();
-$bookingId = $_GET['id'];
+$booking_id = $_GET['id'];
 try {
     $stmt = $conn->query("DELETE FROM bookings WHERE id = :id", [
-        'id' => $bookingId
+        'id' => $booking_id
     ]);
     
     echo "Booking cancelled successfully.";
@@ -19,6 +19,5 @@ try {
 
 } catch (PDOException $e) {
     echo $e->getMessage();
-    echo $e->getCode();
 }
 
