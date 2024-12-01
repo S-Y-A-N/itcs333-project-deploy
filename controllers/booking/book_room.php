@@ -31,11 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
 
             // update room usage
-            $usageQuery = $db->query("SELECT usage FROM rooms WHERE room_id = :room_id", [
-                'room_id' => $roomId
+            $usageQuery = $db->query("SELECT * FROM rooms WHERE room_id = :room_id", [
+                'room_id' => $room_id
             ]);
 
-            $usage = $usageQuery->fetch();
+            $usage = $usageQuery->fetch()['usage'];
 
             dump($usage);
 
