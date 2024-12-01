@@ -6,23 +6,16 @@
     <a href="/home">Return to home page</a>
 </section>
 
-<section id="blue-bar">
-    <h1>User Profile Management</h1>
-</section>
+<form method="post" enctype="multipart/form-data">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" value="<?php echo $user['username']; ?>" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>" required>
+    <label for="profile_picture">Profile Picture:</label>
+    <input type="file" id="profile_picture" name="profile_picture">
+    <button type="submit" name="update_profile">Update Profile</button>
+</form>
 
-<section>
-    <h2>Profile Editing</h2>
-    <!-- Add profile editing functionality here -->
-</section>
-
-<section>
-    <h2>Profile Picture Upload and Management</h2>
-    <!-- Add profile picture upload and management functionality here -->
-</section>
-
-<section>
-    <h2>User Profile Pages</h2>
-    <!-- Design and implement user profile pages here -->
-</section>
-
-<?php require base_path('views/partials/footer.php'); ?>
+<?php if (isset($user['profile_picture'])): ?>
+    <img src="<?php echo base_path('uploads') . "/{$user['profile_picture']}"; ?>" alt="Profile Picture" width="100">
+<?php endif; ?>

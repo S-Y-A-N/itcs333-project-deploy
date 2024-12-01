@@ -3,9 +3,6 @@
 use Core\Database;
 use Core\Validator;
 
-echo 'POST';
-dump($_POST);
-
 // create database connection
 $config = require base_path('config.php');
 $db = new Database($config['database']);
@@ -15,7 +12,7 @@ $db = new Database($config['database']);
 $errors = [];
 
 
-// TODO - here we add all the register logic and validation
+// all the register logic and validation is here
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // query to find email in db
