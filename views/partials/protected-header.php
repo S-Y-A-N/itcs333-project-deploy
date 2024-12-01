@@ -24,6 +24,8 @@
 					</details>
 				</div>
 
+				<li><a href="/bookings" class="contrast">My Bookings</a></li>
+
 				<li><a href="/profile" class="contrast">Profile</a></li>
 
 				<li><a href="/logout" class="contrast">Log out</a></li>
