@@ -10,14 +10,7 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE bookings (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    room_id INT,
-    booking_time DATETIME,
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (room_id) REFERENCES rooms(id)
-);
+
 CREATE TABLE rooms (
     room_id INT AUTO_INCREMENT PRIMARY KEY,
     room_name VARCHAR(100) NOT NULL,

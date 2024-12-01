@@ -9,7 +9,7 @@ $db = new Database($config['database']);
 
 $room_id = (int) $_GET['id'];
 
-$roomQuery = $db->query('SELECT * FROM s40_rooms WHERE room_id = :id', [
+$roomQuery = $db->query('SELECT * FROM rooms WHERE room_id = :id', [
   'id' => $room_id
 ]);
 
