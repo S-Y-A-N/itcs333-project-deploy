@@ -73,5 +73,9 @@ fieldset[role=group] {
 }
 
 nav > ul > div {
-  margin-right: 1rem;
+  margin-right: 0.3rem;
+}
+
+.pnlm-load-button p {
+  color: white;
 }

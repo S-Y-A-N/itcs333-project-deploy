@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <td>Equipment</td>
-          <td> <?= '...' ?> </td>
+          <td> <?= preg_replace('/,/', ', ',$room['equip']) ?> </td>
         </tr>
         <tr>
           <td>Book Room</td>

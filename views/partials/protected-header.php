@@ -25,7 +25,7 @@
 					</details>
 				</div>
 
-				<div><a href="/logout" role="button" class="secondary">Log out</a></div>
+				<div><a href="/logout" role="button" class="secondary contrast">Log out</a></div>
 			</ul>
 		</nav>
 	</div>
