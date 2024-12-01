@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $room_id = (int) $_GET['id'];
 
     // Conflict Checking Algorithm
-    // TODO Add table to db!
     $stmt = $db->query("SELECT * FROM bookings WHERE room_id = :room_id AND booking_time = :booking_time", [
         'room_id' => $room_id,
         'booking_time' => $booking_time
