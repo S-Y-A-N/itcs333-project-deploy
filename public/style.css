@@ -79,3 +79,13 @@ nav > ul > div {
 .pnlm-load-button p {
   color: white;
 }
+
+/* Rooms Cards */
+section.grid > a > article {
+  margin: 0;
+}
+
+section.grid > a:hover {
+  text-decoration: none;
+  box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.267);
+}

@@ -20,7 +20,7 @@ $rooms = [];
 if ($dept === 'rooms') {
 
   // get all rooms from db
-  $roomsQuery = $db->query('SELECT * FROM s40_rooms');
+  $roomsQuery = $db->query('SELECT * FROM rooms');
   $rooms = $roomsQuery->fetchAll();
 } else {
 
