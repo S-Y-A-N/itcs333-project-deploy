@@ -5,8 +5,9 @@
 	</hgroup>
 	<div>
 		<nav>
-			<ul>
-
+			<ul>				
+				<div><a href="/profile" role="button" class="secondary">Profile</a></div>
+				
 				<div>
 					<details class="dropdown">
 						<summary role="button" class="secondary">Theme</summary>

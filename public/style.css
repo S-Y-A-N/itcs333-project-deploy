@@ -71,3 +71,7 @@ fieldset[role=group] {
   background-color: #405d9b;
   color: #d9dfeb;
 }
+
+nav > ul > div {
+  margin-right: 1rem;
+}
