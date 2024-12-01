@@ -25,7 +25,13 @@
 					</details>
 				</div>
 
-				<div><a href="/logout" role="button" class="secondary contrast">Log out</a></div>
+				<li><a href="/bookings" class="contrast">My Bookings</a></li>
+
+				<li><a href="/profile" class="contrast">Profile</a></li>
+
+				<li><a href="/logout" class="contrast contrast">Log out</a></li>
+
+
 			</ul>
 		</nav>
 	</div>

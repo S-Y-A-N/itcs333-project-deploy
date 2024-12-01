@@ -30,6 +30,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'email' => $_SESSION['email']
             ]);
 
+            // update room usage
+            $usageQuery = $db->query("SELECT * FROM rooms WHERE room_id = :room_id", [
+                'room_id' => $room_id
+            ]);
+
+            $usage = $usageQuery->fetch()['usage'];
+
+            dump($usage);
+
             echo "Room booked successfully!";
         }
         catch (PDOException $e) {
