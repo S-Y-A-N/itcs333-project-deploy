@@ -5,10 +5,8 @@
 	</hgroup>
 	<div>
 		<nav>
-			<ul>
-				<div><a href="/profile" role="button">Profile</a></div>
-				
-				<div><a href="/bookings" role="button">My Bookings</a></div>
+			<ul>				
+				<div><a href="/rooms" role="button">Rooms</a></div>
 
 				<div><a href="/profile" role="button">Profile</a></div>
 				

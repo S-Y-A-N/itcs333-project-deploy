@@ -28,15 +28,14 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 
 
-dump("uri: $uri");
-dump("method: $method");
+// dump("uri: $uri");
+// dump("method: $method");
 
 // Start Session
 session_start();
 
-echo 'SESSION';
-
-dump($_SESSION);
+// echo 'SESSION';
+// dump($_SESSION);
 
 // go to controller of the current uri, for example: if the url is '/' it goes to 'controllers/index.php'
 $router->route($uri, $method);

@@ -1,5 +1,5 @@
 <?php require 'partials/head.php'; ?>
-<?php require 'partials/protected-header.php'; ?>
+<?php require 'partials/user-header.php'; ?>
 <?php require 'partials/search-bar.php'; ?>
 
 <section>

@@ -1,9 +1,6 @@
 <?php
-session_start();
-if (!$_SESSION['admin']) { // Check if the user is an admin
-    header('Location: /login'); // Redirect to login if not an admin
-    exit();
-}
+
+authorize($_SESSION['admin'] === 1);
 
 use Core\Database;
 
@@ -13,6 +10,8 @@ $db = new Database($config['database']);
 // Query for room usage statistics
 $roomUsage = $db->query('SELECT room_id, COUNT(*) as bookings FROM bookings GROUP BY room_id')->fetchAll();
 
-view('admin_dashboard.view.php', [
+view('admin/dashboard.view.php', [
+    'h1' => 'Dashboard',
+    'p' => 'Adminstrator',
     'roomUsage' => $roomUsage
 ]);

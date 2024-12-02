@@ -1,6 +1,9 @@
 
 <?php require base_path('views/partials/head.php'); ?>
-<?php require base_path('views/partials/protected-header.php'); ?>
+<?php
+if($_SESSION['admin'] === 0) require base_path('views/partials/user-header.php');
+else require base_path('views/partials/admin-header.php');
+?>
 
 <section>
     <a href="/home">Return to home page</a>

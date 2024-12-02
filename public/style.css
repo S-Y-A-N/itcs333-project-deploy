@@ -25,7 +25,7 @@ header {
 }
 
 /* Header Buttons */
-header nav [role="button"] {
+header nav [role="button"], summary[role=button] {
   padding: 0.2rem 0.6rem;
 }
 

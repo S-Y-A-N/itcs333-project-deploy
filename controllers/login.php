@@ -28,8 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   } else {
 
-    // get password from db
-    $password = $emailQuery->fetch()['password'];
+    // get user data from db
+    $user = $emailQuery->fetch();
+    $password = $user['password'];
 
     // verify the entered password with hashed password
     if (password_verify($_POST['password'], $password)) {
@@ -37,16 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // successful login, start session
       $_SESSION['email'] = $_POST['email'];
 
-      // user type: admin or normal
-      $is_admin = (int) $emailQuery->fetch()['admin'];
-      $_SESSION['admin'] = $is_admin;
+      // specify user type (admin or not) in session
+      $_SESSION['admin'] = $user['admin'];
 
-      if ($_SESSION['admin'] === 0) {
-        header('Location: /home');
-      } else {
-        // TODO admin page
-        header('Location: ???');
-      }
+      header('Location: /home');
+      exit();
 
     } else {
       $errors['message'] = 'You have entered an invalid email or password';
