@@ -1,28 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Management - University of Bahrain</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<?php require base_path('views/partials/head.php'); ?>
-<?php require base_path('views/partials/protected-header.php'); ?>
+<div class="container">
+    <h2>Profile Management</h2>
+    <div class="profile-picture">
+        <img src="<?php echo $user_data['profile_picture']; ?>" alt="Profile Picture">
+    </div>
+    <form action="profile.php" method="post" enctype="multipart/form-data">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="<?php echo $user_data['name']; ?>" required>
 
-<section>
-    <a href="/home">Return to home page</a>
-</section>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" value="<?php echo $user_data['email']; ?>" required>
 
-<section id="blue-bar">
-    <h1>User Profile Management</h1>
-</section>
+        <label for="major">Major</label>
+        <input type="text" name="major" id="major" value="<?php echo $user_data['major']; ?>" required>
 
-<section>
-    <h2>Profile Editing</h2>
-    <!-- Add profile editing functionality here -->
-</section>
+        <label for="profile_picture">Profile Picture</label>
+        <input type="file" name="profile_picture" id="profile_picture">
 
-<section>
-    <h2>Profile Picture Upload and Management</h2>
-    <!-- Add profile picture upload and management functionality here -->
-</section>
+        <input type="submit" value="Update Profile">
+    </form>
+</div>
 
-<section>
-    <h2>User Profile Pages</h2>
-    <!-- Design and implement user profile pages here -->
-</section>
-
-<?php require base_path('views/partials/footer.php'); ?>
+</body>
+</html>
