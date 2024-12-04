@@ -5,7 +5,7 @@
     <title>Your Dashboard</title>
 </head>
 <body>
-    <h1>Your Bookings</h1>
+    <h1>Your Booking</h1>
 
 </body>
 </html>
