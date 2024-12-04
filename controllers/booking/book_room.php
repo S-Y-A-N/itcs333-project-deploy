@@ -1,6 +1,6 @@
 <?php
 
-authorize(condition: isset($_SESSION['email']));
+authorize(isset($_SESSION['email']));
 
 use Core\Database;
 
@@ -8,13 +8,13 @@ $config = require base_path('config.php');
 $db = new Database($config['database']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $bookingTime = $_POST['booking_time'];
+    $booking_time = $_POST['booking_time'];
+    $room_id = (int) $_GET['id'];
 
     // Conflict Checking Algorithm
-    // TODO Add table to db!
     $stmt = $db->query("SELECT * FROM bookings WHERE room_id = :room_id AND booking_time = :booking_time", [
-        'room_id' => $roomId,
-        'booking_time' => $bookingTime
+        'room_id' => $room_id,
+        'booking_time' => $booking_time
     ]);
 
     $conflict = $stmt->fetch();
@@ -23,19 +23,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "This timeslot is already booked. Please choose a different time.";
     } else {
         try {
-            $stmt = $db->query("INSERT INTO bookings (user_id, room_id, booking_time) VALUES (:user_id, :room_id, :booking_time)", [
-                'user_id' => $userId,
-                'room_id' => $roomId,
-                'booking_time' => $bookingTime
+            $stmt = $db->query("INSERT INTO bookings (room_id, booking_time, email) VALUES (:room_id, :booking_time, :email)", [
+                'room_id' => $room_id,
+                'booking_time' => $booking_time,
+                'email' => $_SESSION['email']
             ]);
+
+            // update room usage
+            $usageQuery = $db->query("SELECT * FROM rooms WHERE room_id = :room_id", [
+                'room_id' => $room_id
+            ]);
+
+            $usage = $usageQuery->fetch()['usage'];
+
+            dump($usage);
 
             echo "Room booked successfully!";
         }
         catch (PDOException $e) {
             echo $e->getMessage();
-            echo $e->getCode();
         }
     }
 }
 
-view('rooms/show.view.php');
+require base_path('controllers/rooms/show.php');

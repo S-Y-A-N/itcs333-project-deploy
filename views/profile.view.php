@@ -21,6 +21,20 @@
                 return true; // Allow form submission
             }
         }
+
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(){
+                const output = document.getElementById('profile-picture');
+                output.src = reader.result; // Update the image source to the uploaded file
+            }
+
+            if (file) {
+                reader.readAsDataURL(file); // Convert the file to a data URL
+            }
+        }
     </script>
 </head>
 
@@ -41,71 +55,56 @@
                 </div>
                 <div class="col-md-9">
                     <div class="tab-content">
-                    <div class="tab-pane fade active show" id="account-general">
-    <form action="../upload.php" method="POST" enctype="multipart/form-data" onsubmit="return validateEmail()">
-        <div class="card-body media align-items-center">
-            <?php 
-            $default_image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx3hmshJjWCjpw1tPYQNciN5YeVjelYf47rNr9arrVu7neQZQH_ELX4v9WvigwMpXjLPI&usqp=CAU';
-            ?>
-            <img id="profile-picture" src="<?php echo !empty($user_data['profile_picture']) ? htmlspecialchars($user_data['profile_picture']) : $default_image; ?>" alt="Profile Picture" class="d-block ui-w-80">
-            <div class="media-body ml-4">
-                <label class="btn btn-outline-primary">
-                    Upload new photo
-                    <input type="file" class="account-settings-fileinput" accept="image/*" name="profile_picture" id="profile_picture" hidden onchange="previewImage(event)">
-                </label> &nbsp;
-                <button type="button" class="btn btn-default md-btn-flat" onclick="document.getElementById('profile_picture').click();">Choose File</button>
-                <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
-            </div>
-        </div>
-        <hr class="border-light m-0">
-        <div class="card-body">
-            <div class="form-group">
-                <label class="form-label">Username</label>
-                <input type="text" class="form-control mb-1" value="<?php echo isset($user_data['username']) ? htmlspecialchars($user_data['username']) : ''; ?>" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Name</label>
-                <input type="text" class="form-control" value="<?php echo isset($user_data['name']) ? htmlspecialchars($user_data['name']) : ''; ?>" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Student ID</label>
-                <input type="text" class="form-control mb-1" id="student_id" name="student_id" value="<?php echo isset($user_data['student_id']) ? htmlspecialchars($user_data['student_id']) : ''; ?>" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label">E-mail</label>
-                <input type="email" class="form-control mb-1" id="email" name="email" placeholder="202107996@stu.uob.edu.bh or sample@gmail.com" value="<?php echo isset($user_data['email']) ? htmlspecialchars($user_data['email']) : ''; ?>" required>
-                <div id="error-message" class="alert alert-danger mt-3" style="display: none;">Invalid email format: Student ID must be 9 digits long.</div>
-                <?php if (isset($user_data['email_confirmed']) && !$user_data['email_confirmed']): ?>
-                    <div class="alert alert-warning mt-3">Your email is not confirmed. Please check your inbox.<br><a href="javascript:void(0)">Resend confirmation</a></div>
-                <?php endif; ?>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Major</label>
-                <input type="text" class="form-control" value="<?php echo isset($user_data['major']) ? htmlspecialchars($user_data['major']) : ''; ?>" required>
-            </div>
-        </div>
-        <div class="text-right mt-3">
-            <button type="submit" class="btn btn-primary">Save changes</button>&nbsp;
-            <button type="button" class="btn btn-default">Cancel</button>
-        </div>
-    </form>
-</div>
+                        <div class="tab-pane fade active show" id="account-general">
+                            <form action="../upload.php" method="POST" enctype="multipart/form-data" onsubmit="return validateEmail()">
+                                <div class="card-body media align-items-center">
+                                    <?php 
+                                    $default_image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx3hmshJjWCjpw1tPYQNciN5YeVjelYf47rNr9arrVu7neQZQH_ELX4v9WvigwMpXjLPI&usqp=CAU';
+                                    ?>
+                                    <img id="profile-picture" src="<?php echo !empty($user_data['profile_picture']) ? htmlspecialchars($user_data['profile_picture']) : $default_image; ?>" alt="Profile Picture" class="d-block ui-w-80">
+                                    <div class="media-body ml-4">
+                                        <label class="btn btn-outline-primary">
+                                            Upload new photo
+                                            <input type="file" class="account-settings-fileinput" accept="image/*" name="profile_picture" id="profile_picture" hidden onchange="previewImage(event)">
+                                        </label> &nbsp;
+                                        <button type="button" class="btn btn-default md-btn-flat" onclick="document.getElementById('profile_picture').click();">Choose File</button>
+                                        <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                                    </div>
+                                </div>
+                                <hr class="border-light m-0">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="form-label">Username</label>
+                                        <input type="text" class="form-control mb-1" name="username" value="<?php echo isset($user_data['username']) ? htmlspecialchars($user_data['username']) : ''; ?>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Name</label>
+                                        <input type="text" class="form-control" name="name" value="<?php echo isset($user_data['name']) ? htmlspecialchars($user_data['name']) : ''; ?>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Student ID</label>
+                                        <input type="text" class="form-control mb-1" id="student_id" name="student_id" value="<?php echo isset($user_data['student_id']) ? htmlspecialchars($user_data['student_id']) : ''; ?>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">E-mail</label>
+                                        <input type="email" class="form-control mb-1" id="email" name="email" placeholder="202107996@stu.uob.edu.bh or sample@gmail.com" value="<?php echo isset($user_data['email']) ? htmlspecialchars($user_data['email']) : ''; ?>" required>
+                                        <div id="error-message" class="alert alert-danger mt-3" style="display: none;">Invalid email format: Student ID must be 9 digits long.</div>
+                                        <?php if (isset($user_data['email_confirmed']) && !$user_data['email_confirmed']): ?>
+                                            <div class="alert alert-warning mt-3">Your email is not confirmed. Please check your inbox.<br><a href="javascript:void(0)">Resend confirmation</a></div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Major</label>
+                                        <input type="text" class="form-control" name="major" value="<?php echo isset($user_data['major']) ? htmlspecialchars($user_data['major']) : ''; ?>" required>
+                                    </div>
+                                </div>
+                                <div class="text-right mt-3">
+                                    <button type="submit" class="btn btn-primary">Save changes</button>&nbsp;
+                                    <button type="button" class="btn btn-default">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
 
-<script>
-function previewImage(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    
-    reader.onload = function(){
-        const output = document.getElementById('profile-picture');
-        output.src = reader.result; // Update the image source to the uploaded file
-    }
-    
-    if (file) {
-        reader.readAsDataURL(file); // Convert the file to a data URL
-    }
-}
-</script>
                         <div class="tab-pane fade" id="account-change-password">
                             <div class="card-body">
                                 <form action="../change_password.php" method="POST">
@@ -169,36 +168,29 @@ function previewImage(event) {
                         <div class="tab-pane fade" id="account-connections">
                             <div class="card-body">
                                 <h5 class="font-weight-bold">Manage Your Connections</h5>
-                                
                                 <div class="form-group">
                                     <label for="search_classmate">Search for Classmates</label>
                                     <input type="text" class="form-control" id="search_classmate" placeholder="Search by name or major">
                                     <button class="btn btn-primary mt-2" onclick="searchClassmates()">Search</button>
                                 </div>
-
                                 <h6>Your Connections</h6>
                                 <ul class="list-group mb-3" id="connections_list">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        John Doe
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">John Doe
                                         <button class="btn btn-danger btn-sm">Remove</button>
                                     </li>
                                 </ul>
-
                                 <h6>Pending Connection Requests</h6>
                                 <ul class="list-group mb-3" id="pending_requests">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Jane Smith
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">Jane Smith
                                         <div>
                                             <button class="btn btn-success btn-sm">Accept</button>
                                             <button class="btn btn-danger btn-sm">Decline</button>
                                         </div>
                                     </li>
                                 </ul>
-
                                 <h6>Recommended Connections</h6>
                                 <ul class="list-group" id="recommended_connections">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Alice Johnson
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">Alice Johnson
                                         <button class="btn btn-primary btn-sm">Connect</button>
                                     </li>
                                 </ul>
@@ -208,7 +200,6 @@ function previewImage(event) {
                         <div class="tab-pane fade" id="account-notifications">
                             <div class="card-body">
                                 <h5 class="font-weight-bold">Notifications</h5>
-
                                 <?php if (empty($notifications)): ?>
                                     <div class="text-center">
                                         <img src="https://static.vecteezy.com/system/resources/previews/004/968/451/non_2x/turn-off-no-message-notification-concept-illustration-flat-design-eps10-modern-graphic-element-for-landing-page-empty-state-ui-infographic-vector.jpg" alt="No Notifications" class="img-fluid" style="max-width: 300px;">
