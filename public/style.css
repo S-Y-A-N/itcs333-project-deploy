@@ -72,7 +72,7 @@ fieldset[role=group] {
   color: #d9dfeb;
 }
 
-/* Profile Management Styles */
+/* Profile Management Styles
 body {
   background: #f5f5f5;
   margin-top: 20px;
@@ -177,7 +177,7 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 
 .light-style .account-settings-links .list-group-item.active {
   color: #4E5155 !important;
-}
+} */
 
 nav > ul > div {
   margin-right: 0.3rem;
