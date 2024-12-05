@@ -21,6 +21,7 @@ $router->get('/room', 'controllers/rooms/show.php');
 
 // Profile page
 $router->get('/profile', 'controllers/profile.php');
+$router->post('/profile', 'controllers/profile.php');
 
 // User Bookings
 $router->get('/bookings', 'controllers/user_bookings.php');

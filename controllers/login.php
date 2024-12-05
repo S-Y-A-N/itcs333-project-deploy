@@ -41,6 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // specify user type (admin or not) in session
       $_SESSION['admin'] = $user['admin'];
 
+      // copy profile pic to public folder
+      $_SESSION['pfp'] = $user['profile_picture'];
+      copy(base_path("uploads/{$user['profile_picture']}"), base_path("public/{$user['profile_picture']}"));
+
       header('Location: /home');
       exit();
 

@@ -8,12 +8,12 @@ $db = new Database($config['database']); // Create a new Database object
 $email = $_SESSION['email']; // Get the logged-in user's Email from the session
 
 // Query to get upcoming bookings
-$upcomingBookings = $db->query('SELECT * FROM bookings WHERE email = :email AND booking_time > NOW()', [
+$upcomingBookings = $db->query('SELECT * FROM bookings WHERE email = :email AND start_time > NOW()', [
     'email' => $email
 ])->fetchAll(); // Fetch all upcoming bookings for the user
 
 // Query to get past bookings
-$pastBookings = $db->query('SELECT * FROM bookings WHERE email = :email AND booking_time < NOW()', [
+$pastBookings = $db->query('SELECT * FROM bookings WHERE email = :email AND end_time < NOW()', [
     'email' => $email
 ])->fetchAll(); // Fetch all past bookings for the user
 

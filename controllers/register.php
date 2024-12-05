@@ -48,11 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (empty($errors)) {
 
     // query to insert user data into the db
-    $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
+    $db->query('INSERT INTO users(email, password, username) VALUES(:email, :password, :username)', [
       'email' => $_POST['email'],
-      'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
+      'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+      'username' => $_POST['email']
     ]);
-
 
     $errors['message'] = 'Regestration successful';
 

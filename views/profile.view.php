@@ -15,10 +15,9 @@ else require base_path('views/partials/admin-header.php');
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>" required>
     <label for="profile_picture">Profile Picture:</label>
+    <?php if (isset($user['profile_picture'])): ?>
+        <img class="pfp" width="100" src="<?php echo $profilePicture ?>" alt="Profile Picture">
+    <?php endif; ?>
     <input type="file" id="profile_picture" name="profile_picture">
     <button type="submit" name="update_profile">Update Profile</button>
 </form>
-
-<?php if (isset($user['profile_picture'])): ?>
-    <img src="<?php echo base_path('uploads') . "/{$user['profile_picture']}"; ?>" alt="Profile Picture" width="100">
-<?php endif; ?>

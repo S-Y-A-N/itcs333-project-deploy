@@ -12,7 +12,6 @@ else require base_path('views/partials/admin-header.php');
   </section>
 
   <section class="grid">
-
     <?php foreach ($rooms as $room) : ?>
       <a href="/room?id=<?= $room['room_id'] ?>">
         <article>

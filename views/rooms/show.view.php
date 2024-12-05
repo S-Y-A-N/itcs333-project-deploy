@@ -31,7 +31,10 @@ else require base_path('views/partials/admin-header.php');
         <tr>
           <td>Book Room</td>
           <td>
-            <input type="datetime-local" id="booking_time" name="booking_time" required>
+            <label for="start_time">Start Time</label>
+            <input type="datetime-local" id="start_time" name="start_time" required>
+            <label for="end_time">End Time</label>
+            <input type="datetime-local" id="end_time" name="end_time" required>
           </td>
         </tr>
       </table>

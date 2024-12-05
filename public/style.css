@@ -43,16 +43,17 @@ header nav [role="button"], summary[role=button] {
 }
 
 .error {
-  color: var(--wh-red-800);
+  color: rgb(217, 53, 38);
 }
 
 .success {
-  color: var(--wh-blue-500);
+  color: rgb(60, 113, 247);
 }
 
 article {
   text-align: center;
   width: 100%;
+  margin: 0;
 }
 
 a {
@@ -67,12 +68,6 @@ fieldset[role=group] {
   margin-top: 1rem;
 }
 
-#blue-bar {
-  height: 50px;
-  background-color: #405d9b;
-  color: #d9dfeb;
-}
-
 nav > ul > div {
   margin-right: 0.3rem;
 }
@@ -81,12 +76,27 @@ nav > ul > div {
   color: white;
 }
 
-/* Rooms Cards */
-section.grid > a > article {
-  margin: 0;
+.dept-cards {
+  gap: 1rem;
 }
 
-section.grid > a:hover {
+.pfp {
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Rooms Cards */
+.grid article {
+  margin: 0;
+  width: 100%;
+}
+
+/* Cards Hover */
+section a:has(article):hover {
   text-decoration: none;
   box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.267);
 }

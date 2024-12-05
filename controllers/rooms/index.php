@@ -11,8 +11,6 @@ $db = new Database($config['database']);
 // get department from url
 $dept = basename($uri);
 
-dump($dept);
-
 $h1 = 'Rooms';
 $p = 'Browse all rooms in IT college (S40)';
 $rooms = [];

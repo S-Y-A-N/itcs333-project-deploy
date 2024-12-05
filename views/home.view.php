@@ -4,20 +4,18 @@
 
 <br>
 
-
-
 <main>
 
-<section>
-<a href="/rooms">Browse all rooms</a>
-</section>
+  <section>
+    <a href="/rooms">Browse all rooms</a>
+  </section>
 
 <br>
 
-<section class="flex-col">
+  <section class="flex-col">
     <h2>Departments</h2>
 
-    <div class="flex-row wrap">
+    <div class="dept-cards flex-row wrap">
       <a href="rooms/is">
         <article>
           <h3>Information Systems</h3>

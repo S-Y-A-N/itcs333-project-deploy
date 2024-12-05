@@ -8,13 +8,13 @@ $config = require base_path('config.php');
 $db = new Database($config['database']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $booking_time = $_POST['booking_time'];
+    $start_time = $_POST['start_time'];
     $room_id = (int) $_GET['id'];
 
     // Conflict Checking Algorithm
-    $stmt = $db->query("SELECT * FROM bookings WHERE room_id = :room_id AND booking_time = :booking_time", [
+    $stmt = $db->query("SELECT * FROM bookings WHERE room_id = :room_id AND start_time = :start_time", [
         'room_id' => $room_id,
-        'booking_time' => $booking_time
+        'start_time' => $start_time
     ]);
 
     $conflict = $stmt->fetch();
@@ -23,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "This timeslot is already booked. Please choose a different time.";
     } else {
         try {
-            $stmt = $db->query("INSERT INTO bookings (room_id, booking_time, email) VALUES (:room_id, :booking_time, :email)", [
+            $stmt = $db->query("INSERT INTO bookings (room_id, start_time, email) VALUES (:room_id, :start_time, :email)", [
                 'room_id' => $room_id,
-                'booking_time' => $booking_time,
+                'start_time' => $start_time,
                 'email' => $_SESSION['email']
             ]);
 
