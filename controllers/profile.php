@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 use Core\Validator;
 use Core\Database;
@@ -7,11 +6,9 @@ use Core\Database;
 $config = require base_path('config.php');
 $db = new Database($config['database']);
 
-// Check if the user is logged in
-if (!isset($_SESSION['email'])) {
-    header('Location: login.php'); // Redirect if not logged in
-    exit;
-}
+// Check if the user is logged in and not admin
+authorize(isset($_SESSION['email']) && $_SESSION['admin'] === 0);
+
 
 $currentEmail = $_SESSION['email'];
 $stmt = $db->query('SELECT * FROM users WHERE email = :currentEmail', [

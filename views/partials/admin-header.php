@@ -6,9 +6,10 @@
 	<div>
 		<nav>
 			<ul>				
-				<div><a href="/rooms" role="button">Rooms</a></div>
+				<div><a href="/admin-rooms" role="button">Manage Rooms</a></div>
 
-				<div><a href="/profile" role="button">Profile</a></div>
+				<div><a href="/admin-schedules" role="button">Manage Schedules</a></div>
+
 				
 				<div>
 					<details class="dropdown">

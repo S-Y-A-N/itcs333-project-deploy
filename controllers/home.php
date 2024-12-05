@@ -1,9 +1,10 @@
 <?php
 
+// Check if the user is logged in
 authorize(isset($_SESSION['email']));
 
 if($_SESSION['admin'] === 1) {
-  header('Location: /dashboard');
+  header('Location: /admin-dashboard');
   exit();
 }
 

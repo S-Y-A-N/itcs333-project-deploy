@@ -14,7 +14,9 @@ $router->get('/rooms/cs', 'controllers/rooms/index.php');
 $router->get('/rooms/ce', 'controllers/rooms/index.php');
 
 // Admin Pages
-$router->get('/dashboard', 'controllers/admin/dashboard.php');
+$router->get('/admin-dashboard', 'controllers/admin/dashboard.php');
+$router->get('/admin-rooms', 'controllers/admin/rooms.php');
+$router->get('/admin-schedules', 'controllers/admin/schedules.php');
 
 // Show details for a single room
 $router->get('/room', 'controllers/rooms/show.php');

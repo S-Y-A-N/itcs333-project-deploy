@@ -7,6 +7,17 @@ else require base_path('views/partials/admin-header.php');
 
 <main>
   <section class="room">
+
+  <!-- Success -->
+  <?php if (isset($errors['message'])) : ?>
+    <p class="success"><?= $errors['message'] ?></p>
+  <?php endif ?>
+
+  <!-- Conflict -->
+  <?php if (isset($errors['conflict'])) : ?>
+    <p class="error"><?= $errors['conflict'] ?></p>
+  <?php endif ?>
+
   <form method="post">
     <div style="height: 400px;" id="panorama"></div>
 

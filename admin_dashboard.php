@@ -1,26 +1,3 @@
-<?php
-session_start();
-
-include 'config.php';
-
-if (!isset($_SESSION['admin'])) {
-    header("Location: admin_login.php");
-    exit();
-}
-
-$conn = connectDB();
-$roomCount = $conn->query("SELECT COUNT(*) AS count FROM rooms")->fetch(PDO::FETCH_ASSOC)['count'];
-$scheduleCount = $conn->query("SELECT COUNT(*) AS count FROM schedules")->fetch(PDO::FETCH_ASSOC)['count'];
-
-authorize(isset($_SESSION['email']));
-
-use Core\Database;
-
-$config = require base_path('config.php');
-$db = new Database($config['database']);
-0
-?>
-
 <!DOCTYPE html>
 <html>
 <head>

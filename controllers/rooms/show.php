@@ -18,5 +18,6 @@ $room = $roomQuery->fetch();
 view("rooms/show.view.php", [
   'h1' => "S40-{$room_id}",
   'p' => "Room Details",
-  'room' => $room
+  'room' => $room,
+  'errors' => $errors ?? []
 ]);
