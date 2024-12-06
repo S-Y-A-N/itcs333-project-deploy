@@ -25,6 +25,9 @@ $router->get('/bookings', 'controllers/user_bookings.php');
 // reporting
 $router->get('/reporting', 'controllers/reporting.php');
 
+// statistics
+$router->get('/statistics', 'controllers/statistics_dashpord.php');
+
 // Post Requests
 $router->post('/login', 'controllers/login.php');
 $router->post('/register', 'controllers/register.php');

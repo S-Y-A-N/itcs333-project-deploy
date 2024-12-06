@@ -10,6 +10,9 @@ $mostPopularRooms = $db->query('SELECT room_id, COUNT(*) as booking_count FROM b
 $totalBookings = $db->query('SELECT COUNT(*) as total_bookings FROM bookings')->fetchColumn();
 
 view('reporting.view.php', [
+    'h1' => 'reporting',
+    'p' => '',
     'mostPopularRooms' => $mostPopularRooms,
     'totalBookings' => $totalBookings
 ]);
+
