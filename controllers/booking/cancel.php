@@ -10,7 +10,7 @@ $db = new Database($config['database']);
 // $conn = connectDB();
 $booking_id = $_GET['id'];
 try {
-    $stmt = $conn->query("DELETE FROM bookings WHERE id = :id", [
+    $stmt = $db->query("DELETE FROM bookings WHERE id = :id", [
         'id' => $booking_id
     ]);
     
