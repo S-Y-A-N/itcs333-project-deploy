@@ -11,18 +11,27 @@ $room_id = (int) $_GET['id'];
 
 // zainab
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment'])) {
-  $email = $_SESSION['email']; // Assuming user email is stored in session
-  $comment = $_POST['comment'];
+  $email = $_SESSION['email']; // User email
+  $comment = htmlspecialchars(trim($_POST['comment']), ENT_QUOTES, 'UTF-8');
 
-  // Insert the comment into the database
-  $stmt = $db->prepare('INSERT INTO comments (room_id, user_email, comment) VALUES (:room_id, :email, :comment)');
-  $stmt->bindParam(':room_id', $room_id);
-  $stmt->bindParam(':email', $email);
-  $stmt->bindParam(':comment', $comment);
-  $stmt->execute();
+  if (!empty($comment)) {
+      // Insert the comment in database
+      $stmt = $db->prepare('INSERT INTO comments (room_id, user_email, comment) VALUES (:room_id, :email, :comment)');
+      $stmt->bindParam(':room_id', $room_id);
+      $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':comment', $comment);
+
+      if ($stmt->execute()) {
+          header("Location: show.php?id=$room_id");
+          exit;
+      } else {
+          echo "Error submitting comment.";
+      }
+  } else {
+      echo "Comment cannot be empty.";
+  }
 }
 
-// zainab 
 
 $roomQuery = $db->query('SELECT * FROM rooms WHERE room_id = :id', [
   'id' => $room_id
@@ -30,7 +39,6 @@ $roomQuery = $db->query('SELECT * FROM rooms WHERE room_id = :id', [
 
 $room = $roomQuery->fetch();
 
-//zainab
 $commentsQuery = $db->query('SELECT * FROM comments WHERE room_id = :room_id ORDER BY created_at DESC', [
   'room_id' => $room_id
 ]);

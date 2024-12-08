@@ -39,7 +39,7 @@
 
   <h3>Leave a Comment</h3>
 <form method="post">
-    <textarea name="comment" placeholder="Leave your feedback..." required></textarea>
+    <textarea name="comment" placeholder="Leave your comment..." required></textarea>
     <button type="submit">Submit Comment</button>
 </form>
   
@@ -49,7 +49,7 @@
       <ul>
         <?php foreach ($comments as $comment): ?>
           <li>
-            <strong><?= htmlspecialchars($comment['user_email']) ?>:</strong>
+            <strong><?= htmlspecialchars($comment['email']) ?>:</strong>
             <?= htmlspecialchars($comment['comment']) ?>
             <em> on <?= htmlspecialchars($comment['created_at']) ?></em>
           </li>
@@ -66,7 +66,7 @@
 <script>
 pannellum.viewer('panorama', {
     "type": "equirectangular",
-    "panorama": "classroom-360.jpg",
+    "panorama": "classroom-360.jpg"
     "preview": "classroom-360.jpg",
     "autoRotate": -2,
     "vaov": 70,
