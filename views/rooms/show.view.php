@@ -37,6 +37,29 @@
     <button type="submit">Book Room</button>
   </form>
 
+  <h3>Leave a Comment</h3>
+<form method="post">
+    <textarea name="comment" placeholder="Leave your feedback..." required></textarea>
+    <button type="submit">Submit Comment</button>
+</form>
+  
+    <!-- Display Comments -->
+    <h3>Comments</h3>
+    <?php if ($comments): ?>
+      <ul>
+        <?php foreach ($comments as $comment): ?>
+          <li>
+            <strong><?= htmlspecialchars($comment['user_email']) ?>:</strong>
+            <?= htmlspecialchars($comment['comment']) ?>
+            <em> on <?= htmlspecialchars($comment['created_at']) ?></em>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    <?php else: ?>
+      <p>No comments yet.</p>
+    <?php endif; ?>
+  
+
   </section>
 </main>
 

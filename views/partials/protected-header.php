@@ -28,6 +28,10 @@
 				<li><a href="/bookings" class="contrast">My Bookings</a></li>
 
 				<li><a href="/reporting" class="contrast">Reporting</a></li>
+				
+				<li><a href="/statistics" class="contrast">statistics</a></li>
+
+				<li><a href="/feedback" class="contrast">feedback</a></li>
 
 				<li><a href="/profile" class="contrast">Profile</a></li>
 
