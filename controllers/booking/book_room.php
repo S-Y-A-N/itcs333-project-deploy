@@ -17,41 +17,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $start_time = date('Y-m-d H:i:s', strtotime($_POST['start_time']));
         $end_time = date('Y-m-d H:i:s', strtotime($_POST['end_time']));
 
+        $hours = (strtotime($end_time) - strtotime($start_time)) / 3600;
 
-        // Conflict Checking Algorithm
-        $conflict = $db->query("SELECT * FROM bookings WHERE (room_id = :room_id) AND (:start_time < end_time AND :end_time > start_time)", [
-            'room_id' => $room_id,
-            'start_time' => $start_time,
-            'end_time' => $end_time
-        ]);
+        if ($hours <= 0) {
+            $errors['time'] = "End time must be after the start time";
+        }
 
-        if ($conflict->rowCount() > 0) {
-            $errors['conflict'] = "This timeslot is already booked. Please choose a different time.";
-        } else {
+        else if ($hours > 2) {
+            $errors['time'] = "The timeslot cannot exceed 2 hours";
+        }
 
-            $db->query("INSERT INTO bookings (email, room_id, start_time, end_time) VALUES (:email, :room_id, :start_time, :end_time)", [
-                'email' => $_SESSION['email'],
+        else {
+
+            // Conflict Checking Algorithm
+            $conflict = $db->query("SELECT * FROM bookings WHERE (room_id = :room_id) AND (:start_time < end_time AND :end_time > start_time)", [
                 'room_id' => $room_id,
                 'start_time' => $start_time,
                 'end_time' => $end_time
             ]);
 
-            // update room usage
-            $usageQuery = $db->query("SELECT * FROM rooms WHERE room_id = :room_id", [
-                'room_id' => $room_id
-            ]);
+            if ($conflict->rowCount() > 0) {
+                $errors['conflict'] = "This timeslot is already booked. Please choose a different time.";
+            }
+            
+            else {
 
-            $usage = (int) $usageQuery->fetch()['usage'];
-            $usage += 1;
+                $db->query("INSERT INTO bookings (email, room_id, start_time, end_time) VALUES (:email, :room_id, :start_time, :end_time)", [
+                    'email' => $_SESSION['email'],
+                    'room_id' => $room_id,
+                    'start_time' => $start_time,
+                    'end_time' => $end_time
+                ]);
+
+                // update room usage
+                $usageQuery = $db->query("SELECT * FROM rooms WHERE room_id = :room_id", [
+                    'room_id' => $room_id
+                ]);
+
+                $usage = (int) $usageQuery->fetch()['usage'];
+                $usage += 1;
 
 
-            $db->query("UPDATE rooms SET `usage` = :usage WHERE room_id = :room_id", [
-                'room_id' => $room_id,
-                'usage' => $usage
-            ]);
+                $db->query("UPDATE rooms SET `usage` = :usage WHERE room_id = :room_id", [
+                    'room_id' => $room_id,
+                    'usage' => $usage
+                ]);
 
-            $errors['message'] = "Room booked successfully for the timeslot {$start_time} to {$end_time}.";
+                $errors['message'] = "Room booked successfully for the timeslot {$start_time} to {$end_time}.";
 
+            }
         }
     }
     

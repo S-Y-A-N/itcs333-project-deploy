@@ -1,6 +1,6 @@
 <?php require base_path('views/partials/head.php'); ?>
 <?php require base_path('views/partials/breadcrumb-nav.php'); ?>
-<?php
+<s?php
 if($_SESSION['admin'] === 0) require base_path('views/partials/user-header.php');
 else require base_path('views/partials/admin-header.php');
 ?>
@@ -45,12 +45,19 @@ else require base_path('views/partials/admin-header.php');
             <label for="start_time">Start Time</label>
             <input type="datetime-local" id="start_time" name="start_time" required>
             <label for="end_time">End Time</label>
-            <input type="datetime-local" id="end_time" name="end_time" required>
+            <input type="datetime-local" id="end_time" aria-describedby="time-helper" name="end_time" required>
+
+            <?php if (isset($errors['time'])) : ?>
+              <small class="error" id="time-helper"><?= $errors['time'] ?></small>
+            <?php endif ?>
           </td>
         </tr>
       </table>
+      <p style="color: DarkSlateBlue;">• Mximum time period is <strong>2 hours</strong></p>
+      <p style="color: DarkSlateBlue;">• Allowed booking time is <strong>8 AM - 6 PM</strong></p>
+      <!-- <p style="color: DarkSlateBlue;">• You can only book a room once a week. Please speak to the adminstration to book for you if you need more</p> -->
     </div>
-
+    <hr>
     <button type="submit">Book Room</button>
   </form>
 

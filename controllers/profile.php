@@ -9,12 +9,13 @@ $db = new Database($config['database']);
 // Check if the user is logged in and not admin
 authorize(isset($_SESSION['email']) && $_SESSION['admin'] === 0);
 
-
 $currentEmail = $_SESSION['email'];
 $stmt = $db->query('SELECT * FROM users WHERE email = :currentEmail', [
     'currentEmail' => $currentEmail
 ]);
 $user = $stmt->fetch();
+
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -36,14 +37,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'currentEmail' => $currentEmail
             ]);
     
-            $_SESSION['email'] = $username; // Update session email
+            $_SESSION['email'] = $email; // Update session email
+
             header('Location: ../views/profile.view.php?success=1'); // Redirect after saving
             exit;
         } catch(PDOException $e) {
-            echo "Failed to update profile.";
+            $errors['message'] = "Failed to update profile.";
         }
     } else {
-        echo "Invalid email format. Only UoB emails are allowed.";
+        $errors['email'] = "Invalid email format. Only UoB emails are allowed.";
     }
 }
 
@@ -52,5 +54,5 @@ view('profile.view.php', [
     'p' => 'Customize your profile here',
     'user' => $user,
     'errors' => $errors,
-    'profilePicture' => $profilePicture
+    'profilePicture' => $_SESSION['pfp']
 ]);

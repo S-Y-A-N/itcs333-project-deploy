@@ -2,15 +2,11 @@
 <?php require 'partials/user-header.php'; ?>
 <?php require 'partials/search-bar.php'; ?>
 
-<br>
+<section>
+    <strong><a href="/rooms">Browse all rooms</a></strong>
+</section>
 
 <main>
-
-  <section>
-    <a href="/rooms">Browse all rooms</a>
-  </section>
-
-<br>
 
   <section class="flex-col">
     <h2>Departments</h2>
