@@ -3,6 +3,7 @@
 // Check if the user is logged in and not admin
 authorize(isset($_SESSION['email']) && $_SESSION['admin'] === 0);
 
+use Core\Validator;
 use Core\Database;
 
 $config = require base_path('config.php');
@@ -10,21 +11,27 @@ $db = new Database($config['database']);
 
 $errors = [];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (Validator::post('book_room')) {
     try {
 
         $room_id = (int) $_GET['id'];
         $start_time = date('Y-m-d H:i:s', strtotime($_POST['start_time']));
         $end_time = date('Y-m-d H:i:s', strtotime($_POST['end_time']));
 
-        $hours = (strtotime($end_time) - strtotime($start_time)) / 3600;
+        $hour = date('H', strtotime($start_time));
+        
+        $time_period = (strtotime($end_time) - strtotime($start_time)) / 3600;
 
-        if ($hours <= 0) {
+        if ($time_period <= 0) {
             $errors['time'] = "End time must be after the start time";
         }
 
-        else if ($hours > 2) {
+        else if ($time_period > 2) {
             $errors['time'] = "The timeslot cannot exceed 2 hours";
+        }
+
+        else if ($hour < 8 || $hour > 18) {
+            $errors['time'] = "Start time should be between 8 AM and 6 PM";
         }
 
         else {

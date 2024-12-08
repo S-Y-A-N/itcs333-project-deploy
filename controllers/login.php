@@ -1,6 +1,7 @@
 
 <?php
 
+use Core\Validator;
 use Core\Database;
 
 // create database connection
@@ -14,7 +15,7 @@ $errors = [];
 $invalid = true;
 
 // TODO - here we add all the login logic and validation
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (Validator::post('login')) {
 
   // query to find email in db
   $emailQuery = $db->query('SELECT * FROM users WHERE email = :email', [

@@ -2,12 +2,13 @@
 
 authorize($_SESSION['admin'] === 1);
 
+use Core\Validator;
 use Core\Database;
 
 $config = require base_path('config.php'); 
 $db = new Database($config['database']); 
 
-if (isset($_POST['add_room'])) {
+if (Validator::post('add_room')) {
   $room_name = $_POST['room_name'];
   $capacity = $_POST['capacity'];
   $equipment = $_POST['equipment'];
@@ -19,7 +20,7 @@ if (isset($_POST['add_room'])) {
   ]);
 }
 
-if (isset($_POST['edit_room'])) {
+if (Validator::post('edit_room')) {
   $room_id = $_POST['room_id'];
   $room_name = $_POST['room_name'];
   $capacity = $_POST['capacity'];
@@ -34,7 +35,7 @@ if (isset($_POST['edit_room'])) {
   ]);
 }
 
-if (isset($_POST['delete_room'])) {
+if (Validator::post('delete_room')) {
   $room_id = $_POST['room_id'];
 
   $stmt = $db->query("DELETE FROM rooms WHERE room_id = :room_id", [

@@ -1,7 +1,7 @@
 <?php
 
-use Core\Database;
 use Core\Validator;
+use Core\Database;
 
 // create database connection
 $config = require base_path('config.php');
@@ -13,7 +13,7 @@ $errors = [];
 
 
 // all the register logic and validation is here
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (Validator::post('register')) {
 
   // query to find email in db
   $emailQuery = $db->query('SELECT email FROM users WHERE email = :email', [

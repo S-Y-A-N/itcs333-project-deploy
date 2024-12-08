@@ -1,6 +1,6 @@
 <?php require base_path('views/partials/head.php'); ?>
 <?php require base_path('views/partials/breadcrumb-nav.php'); ?>
-<s?php
+<?php
 if($_SESSION['admin'] === 0) require base_path('views/partials/user-header.php');
 else require base_path('views/partials/admin-header.php');
 ?>
@@ -58,7 +58,7 @@ else require base_path('views/partials/admin-header.php');
       <!-- <p style="color: DarkSlateBlue;">• You can only book a room once a week. Please speak to the adminstration to book for you if you need more</p> -->
     </div>
     <hr>
-    <button type="submit">Book Room</button>
+    <button type="submit" name="book_room">Book Room</button>
   </form>
 
   </section>

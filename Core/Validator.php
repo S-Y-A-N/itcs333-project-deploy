@@ -37,4 +37,8 @@ class Validator {
   public static function password_match($p1, $p2) {
     return $p1 === $p2;
   }
+
+  public static function post($name) {
+    return $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST[$name]);
+  }
 }

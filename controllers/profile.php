@@ -17,7 +17,7 @@ $user = $stmt->fetch();
 
 $errors = [];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (Validator::post('update_profile')) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $profile_picture = $user['profile_picture']; // Keep existing picture by default

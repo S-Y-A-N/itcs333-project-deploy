@@ -2,12 +2,13 @@
 
 authorize($_SESSION['admin'] === 1);
 
+use Core\Validator;
 use Core\Database;
 
 $config = require base_path('config.php'); 
 $db = new Database($config['database']); 
 
-if (isset($_POST['add_schedule'])) {
+if (Validator::post('add_schedule')) {
   $room_id = $_POST['room_id'];
   $start_time = $_POST['start_time'];
   $end_time = $_POST['end_time'];
@@ -19,7 +20,7 @@ if (isset($_POST['add_schedule'])) {
   ]);
 }
 
-if (isset($_POST['edit_schedule'])) {
+if (Validator::post('edit_schedule')) {
   $booking_id = $_POST['schedule_id'];
   $room_id = $_POST['room_id'];
   $start_time = $_POST['start_time'];
@@ -33,7 +34,7 @@ if (isset($_POST['edit_schedule'])) {
   ]);
 }
 
-if (isset($_POST['delete_schedule'])) {
+if (Validator::post('delete_schedule')) {
   $booking_id = $_POST['schedule_id'];
 
   $stmt = $db->query("DELETE FROM bookings WHERE booking_id = :booking_id", [
