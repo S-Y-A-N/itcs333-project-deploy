@@ -9,9 +9,9 @@ $db = new Database($config['database']);
 // Check if the user is logged in and not admin
 authorize(isset($_SESSION['email']) && $_SESSION['admin'] === 0);
 
-$currentEmail = $_SESSION['email'];
-$stmt = $db->query('SELECT * FROM users WHERE email = :currentEmail', [
-    'currentEmail' => $currentEmail
+$current_email = $_SESSION['email'];
+$stmt = $db->query('SELECT * FROM users WHERE email = :current_email', [
+    'current_email' => $current_email
 ]);
 $user = $stmt->fetch();
 
@@ -24,27 +24,57 @@ if (Validator::post('update_profile')) {
 
     if (Validator::uob_email($email)) {
         try {
+            $file = $_FILES['profile_picture']['tmp_name'];
+
             // Handle profile picture upload
-            if (!empty($_FILES['profile_picture']['name'])) {
-                $profile_picture = $username . "_" . basename($_FILES['profile_picture']['name']);
-                move_uploaded_file($_FILES['profile_picture']['tmp_name'], "uploads/" . $profile_picture);
+            if ( !empty($file) ) {
+
+                $mime = mime_content_type($file);
+
+                // Check file size and type
+                if (filesize($file) <= 5242880 && ($mime === 'image/png' || $mime === 'image/jpeg') ) {
+
+                    // remove old pfp from public and uploads folder
+                    unlink(base_path("public/{$_SESSION['pfp']}"));
+                    unlink(base_path("uploads/{$_SESSION['pfp']}"));
+
+                    // create file name: email.ext
+                    $ogfile = $_FILES['profile_picture']['name'];
+                    $ext = pathinfo($ogfile)['extension'];
+                    $profile_picture = "{$email}.{$ext}";
+
+                    // move file to uploads, copy to public
+                    move_uploaded_file($file, base_path("uploads/$profile_picture"));
+                    copy(base_path("uploads/$profile_picture"), base_path("public/$profile_picture"));
+
+                }
+
+                else {
+                    $errors['file'] = (filesize($file) > 5242880) ? "File size cannot exceed 5 MB" : "Failed to upload file";
+                }
+                
             }
     
-            $stmt = $db->query("UPDATE users SET username = :username, email = :email, profile_picture = :profile_picture WHERE email = :currentEmail", [
+            $stmt = $db->query("UPDATE users SET username = :username, email = :email, profile_picture = :profile_picture WHERE email = :current_email", [
                 'username' => $username,
                 'email' => $email,
                 'profile_picture' => $profile_picture,
-                'currentEmail' => $currentEmail
+                'current_email' => $current_email
             ]);
     
-            $_SESSION['email'] = $email; // Update session email
-
-            header('Location: ../views/profile.view.php?success=1'); // Redirect after saving
-            exit;
-        } catch(PDOException $e) {
+            // Update session info
+            $_SESSION['email'] = $email;
+            $_SESSION['pfp'] = $profile_picture;
+            
+        }
+        
+        catch(PDOException $e) {
             $errors['message'] = "Failed to update profile.";
         }
-    } else {
+
+    }
+    
+    else {
         $errors['email'] = "Invalid email format. Only UoB emails are allowed.";
     }
 }
@@ -54,5 +84,5 @@ view('profile.view.php', [
     'p' => 'Customize your profile here',
     'user' => $user,
     'errors' => $errors,
-    'profilePicture' => $_SESSION['pfp']
+    'profile_picture' => $_SESSION['pfp']
 ]);

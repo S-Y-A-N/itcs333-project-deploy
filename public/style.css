@@ -184,6 +184,7 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
   color: #4E5155 !important;
 }
 */
+
 /* Pannelleum Text Color */
 .pnlm-load-button p {
   color: white;
@@ -196,6 +197,8 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 
 .pfp {
   aspect-ratio: 1;
+  object-fit: cover;
+  width: 100px;
   border-radius: 50%;
 }
 

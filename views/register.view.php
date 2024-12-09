@@ -26,7 +26,7 @@
       <small class="error" id="password-helper"><?= $errors['password'] ?></small>
     <?php endif ?>
 
-    <button type="submit">Submit</button>
+    <button type="submit" name="register">Submit</button>
   </form>
 </div>
 

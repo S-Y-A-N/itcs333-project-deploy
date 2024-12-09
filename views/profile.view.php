@@ -14,10 +14,28 @@ else require base_path('views/partials/admin-header.php');
     <input type="text" id="username" name="username" value="<?php echo $user['username']; ?>" required>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>" required>
+
     <label for="profile_picture">Profile Picture:</label>
     <?php if (isset($user['profile_picture'])): ?>
-        <img class="pfp" width="100" src="<?php echo $profilePicture ?>" alt="Profile Picture">
+        <img id="pfp" class="pfp" src="<?php echo $profile_picture ?>" alt="Profile Picture">
     <?php endif; ?>
-    <input type="file" id="profile_picture" name="profile_picture">
+
+    <input type="file" id="profile_picture" name="profile_picture" accept="image/png, image/jpeg" aria-describedby="file-helper">
+    <?php if (isset($errors['file'])) : ?>
+      <small class="error" id="file-helper"><?= $errors['file'] ?></small>
+    <?php endif ?>
+
     <button type="submit" name="update_profile">Update Profile</button>
 </form>
+
+<script>
+
+profile_picture.onchange = e => {
+  const [file] = profile_picture.files;
+
+  if (file) {
+    pfp.src = URL.createObjectURL(file);
+  }
+}
+
+</script>
