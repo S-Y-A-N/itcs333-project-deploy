@@ -1,9 +1,28 @@
+/* Header */
 header {
   margin: 1.5rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+
+  margin-bottom: 4rem;
+}
+
+header > hgroup {
+  margin-right: 1rem;
+}
+
+hgroup h1, hgroup p {
+  margin: 0;
+}
+
+hgroup .pfp {
+  width: 3rem;
+}
+
+hgroup h1 {
+  margin-bottom: 5px;
 }
 
 /* Layout */
@@ -66,124 +85,60 @@ fieldset[role=group] {
   box-shadow: none;
 }
 
+fieldset[role=group] > [type=submit] {
+  min-width: fit-content;
+  max-width: 165px;
+}
+
+/* Profile */
+.profile-form-container {
+  width: 100%;
+  gap: 4rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.profile-form-container > * {
+  width: 100%;
+}
+
+.profile-form-container > :first-child {
+  flex-grow: 2;
+}
+
 .room .info {
-  margin-top: 1rem;
+  margin-top: 4rem;
 }
 
-#blue-bar {
-  height: 50px;
-  background-color: #405d9b;
-  color: #d9dfeb;
+.pfp-btns {
+  gap: 5px;
 }
 
-/* Profile Management Styles */
-/*
-body {
-  background: #f5f5f5;
-  margin-top: 20px;
+.pfp-btns > :first-child {
+  border: var(--pico-border-width) solid red;
+  background-color: red;
+  width: min-content;
+  transition: background-color var(--pico-transition);
 }
 
-.ui-w-80 {
-  width: 80px !important;
-  height: auto;
+.pfp-btns > :first-child:hover {
+  border: var(--pico-border-width) solid rgb(190, 0, 0);
+  background-color: rgb(190, 0, 0);
 }
 
-.btn-default {
-  border-color: rgba(24, 28, 33, 0.1);
-  background: rgba(0, 0, 0, 0);
-  color: #4E5155;
+.pfp-btns > * {
+  padding: 0.5rem 1rem;
 }
 
-label.btn {
-  margin-bottom: 0;
+.pfp-container {
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
-.btn-outline-primary {
-  border-color: #26B4FF;
-  background: transparent;
-  color: #26B4FF;
+.pfp-controls {
+  justify-content: flex-start;
+  align-items: flex-start;
 }
-
-.btn {
-  cursor: pointer;
-}
-
-.text-light {
-  color: #babbbc !important;
-}
-
-.btn-facebook {
-  border-color: rgba(0, 0, 0, 0);
-  background: #3B5998;
-  color: #fff;
-}
-
-.btn-instagram {
-  border-color: rgba(0, 0, 0, 0);
-  background: #000;
-  color: #fff;
-}
-
-.card {
-  background-clip: padding-box;
-  box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-}
-
-.row-bordered {
-  overflow: hidden;
-}
-
-.account-settings-fileinput {
-  position: absolute;
-  visibility: hidden;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-}
-
-.account-settings-links .list-group-item.active {
-  font-weight: bold !important;
-}
-
-html:not(.dark-style) .account-settings-links .list-group-item.active {
-  background: transparent !important;
-}
-
-.account-settings-multiselect~.select2-container {
-  width: 100% !important;
-}
-
-.light-style .account-settings-links .list-group-item {
-  padding: 0.85rem 1.5rem;
-  border-color: rgba(24, 28, 33, 0.03) !important;
-}
-
-.light-style .account-settings-links .list-group-item.active {
-  color: #4E5155 !important;
-}
-
-.material-style .account-settings-links .list-group-item {
-  padding: 0.85rem 1.5rem;
-  border-color: rgba(24, 28, 33, 0.03) !important;
-}
-
-.material-style .account-settings-links .list-group-item.active {
-  color: #4E5155 !important;
-}
-
-.dark-style .account-settings-links .list-group-item {
-  padding: 0.85rem 1.5rem;
-  border-color: rgba(255, 255, 255, 0.03) !important;
-}
-
-.dark-style .account-settings-links .list-group-item.active {
-  color: #fff !important;
-}
-
-.light-style .account-settings-links .list-group-item.active {
-  color: #4E5155 !important;
-}
-*/
 
 /* Pannelleum Text Color */
 .pnlm-load-button p {
@@ -198,8 +153,10 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 .pfp {
   aspect-ratio: 1;
   object-fit: cover;
-  width: 100px;
+  width: 7rem;
   border-radius: 50%;
+
+  margin-right: 1rem;
 }
 
 .grid {
@@ -216,4 +173,12 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 section a:has(article):hover {
   text-decoration: none;
   box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.267);
+}
+
+
+/* Media Queries */
+@media (min-width: 1280px) {
+  .profile-form-container > * {
+    width: auto;
+  }
 }

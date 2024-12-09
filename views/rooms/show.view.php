@@ -1,5 +1,5 @@
 <?php require base_path('views/partials/head.php'); ?>
-<?php require base_path('views/partials/breadcrumb-nav.php'); ?>
+<?php require base_path('views/partials/room-bc-nav.php'); ?>
 <?php
 if($_SESSION['admin'] === 0) require base_path('views/partials/user-header.php');
 else require base_path('views/partials/admin-header.php');

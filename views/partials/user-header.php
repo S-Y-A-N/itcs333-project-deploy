@@ -1,11 +1,15 @@
 <header class="container">
-	<hgroup>
-		<h1><?= $h1 ?></h1>
-		<p><?= $p ?></p>
+	<hgroup class="flex-row">
+		<img class="pfp" src="<?= $_SESSION['pfp'] ?>" alt="Profile Picture">
+		<div>
+			<h1><?= $h1 ?></h1>
+			<p><?= $p ?></p>
+		</div>
 	</hgroup>
 	<div>
 		<nav>
-			<ul>				
+			<ul>
+
 				<div><a href="/bookings" role="button">My Bookings</a></div>
 
 				<div><a href="/profile" role="button">Profile</a></div>

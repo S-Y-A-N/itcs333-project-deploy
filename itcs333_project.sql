@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 05, 2024 at 01:09 PM
+-- Generation Time: Dec 09, 2024 at 02:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -35,6 +35,17 @@ CREATE TABLE `bookings` (
   `end_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`id`, `email`, `room_id`, `start_time`, `end_time`) VALUES
+(21, '100@uob.edu.bh', 22, '2024-12-06 08:00:00', '2024-12-06 09:00:00'),
+(22, '100@uob.edu.bh', 22, '2024-12-06 09:00:00', '2024-12-06 10:00:00'),
+(25, '100@uob.edu.bh', 2091, '2024-12-10 12:00:00', '2024-12-12 13:00:00'),
+(26, '100@uob.edu.bh', 2091, '2024-12-14 08:00:00', '2024-12-14 09:30:00'),
+(28, '100@uob.edu.bh', 2091, '2024-12-15 12:00:00', '2024-12-15 13:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -56,7 +67,7 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`room_id`, `room_name`, `type`, `equip`, `dept`, `capacity`, `usage`) VALUES
-(22, '', 'lab', 'Whiteboard,Smart Board,Projector', 'is', 20, 0),
+(22, '', 'lab', 'Whiteboard,Smart Board,Projector', 'is', 20, 4),
 (23, '', 'lab', 'Whiteboard,Smart Board,Projector', 'is', 20, 0),
 (32, '', 'classroom', 'Whiteboard,Smart Board,Projector', 'is', 40, 0),
 (49, NULL, 'classroom', 'Whiteboard,Smart Board,Projector', 'cs', 40, 0),
@@ -87,7 +98,7 @@ INSERT INTO `rooms` (`room_id`, `room_name`, `type`, `equip`, `dept`, `capacity`
 (1086, NULL, 'classroom', 'Whiteboard,Smart Board,Projector', 'ce', 40, 0),
 (1087, 'Microprocessor Lab', 'lab', 'Whiteboard,Smart Board,Projector,Electronics Components', 'ce', 20, 0),
 (1089, 'Computer Electronic Lab', 'lab', 'Whiteboard,Smart Board,Projector,DC Power Supply,Digital Multimeter,Function Generator,Electronics Components', 'ce', 20, 0),
-(2005, '', 'classroom', 'Whiteboard,Smart Board,Projector', 'is', 40, 0),
+(2005, '', 'classroom', 'Whiteboard,Smart Board,Projector', 'is', 40, 1),
 (2007, '', 'classroom', 'Whiteboard,Smart Board,Projector', 'is', 40, 0),
 (2008, '', 'classroom', 'Whiteboard,Smart Board,Projector', 'is', 40, 0),
 (2010, '', 'classroom', 'Whiteboard,Smart Board,Projector', 'is', 40, 0),
@@ -110,7 +121,7 @@ INSERT INTO `rooms` (`room_id`, `room_name`, `type`, `equip`, `dept`, `capacity`
 (2087, NULL, 'classroom', 'Whiteboard,Smart Board,Projector', 'ce', 40, 0),
 (2088, NULL, 'classroom', 'Whiteboard,Smart Board,Projector', 'ce', 40, 0),
 (2089, 'Internet of Things Lab', 'classroom', 'Whiteboard,Smart Board,Projector,Server', 'ce', 20, 0),
-(2091, 'Huawei ICT Academy', 'classroom', 'Whiteboard,Smart Board,Projector,Server', 'ce', 20, 0);
+(2091, 'Huawei ICT Academy', 'classroom', 'Whiteboard,Smart Board,Projector,Server', 'ce', 20, 10);
 
 -- --------------------------------------------------------
 
@@ -131,9 +142,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`email`, `password`, `username`, `profile_picture`, `admin`) VALUES
-('100@uob.edu.bh', '$2y$10$KrYz0DBIadbKQqyfpA7tbeeTew3bbYZYQieSWYn4DcRRgOt4h4Zl6', '100@uob.edu.bh', 'default-pfp.png', b'0'),
+('100@uob.edu.bh', '$2y$10$KrYz0DBIadbKQqyfpA7tbeeTew3bbYZYQieSWYn4DcRRgOt4h4Zl6', 'Sarah101', '100@uob.edu.bh.jpg', b'0'),
 ('200@uob.edu.bh', '$2y$10$DSwi4LYc1iDtFBXz0ziAXuyzCP3E2M3uBmoxZfzDxsYwx7NeGXGZq', '200@uob.edu.bh', 'default-pfp.png', b'1'),
-('300@uob.edu.bh', '$2y$10$Dn4I.YSZJAZye0dfvpVg7.pI.FcuTrIPPQh/021okesLwYnDuAvTu', '300', '300_', b'0');
+('300@uob.edu.bh', '$2y$10$Dn4I.YSZJAZye0dfvpVg7.pI.FcuTrIPPQh/021okesLwYnDuAvTu', '300@uob.edu.bh', 'default-pfp.png', b'0');
 
 --
 -- Indexes for dumped tables
@@ -166,7 +177,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Constraints for dumped tables

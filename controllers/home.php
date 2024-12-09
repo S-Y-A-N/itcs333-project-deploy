@@ -10,5 +10,5 @@ if($_SESSION['admin'] === 1) {
 
 view('home.view.php', [
   'h1' => 'Home',
-  'p' => "Welcome, {$_SESSION['email']}"
+  'p' => "Welcome, {$_SESSION['username']}"
 ]);

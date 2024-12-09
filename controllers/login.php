@@ -39,6 +39,8 @@ if (Validator::post('login')) {
       // successful login, start session
       $_SESSION['email'] = $_POST['email'];
 
+      $_SESSION['username'] = $user['username'];
+
       // specify user type (admin or not) in session
       $_SESSION['admin'] = $user['admin'];
 

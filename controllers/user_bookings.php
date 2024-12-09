@@ -20,7 +20,7 @@ $pastBookings = $db->query('SELECT * FROM bookings WHERE email = :email AND end_
 // Load the view to display the data
 view('user_bookings.view.php', [
     'h1' => 'My Bookings',
-    'p' => '',
+    'p' => 'View upcoming and past bookings',
     'upcoming' => $upcomingBookings,
     'past' => $pastBookings
 ]);

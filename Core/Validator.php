@@ -41,4 +41,12 @@ class Validator {
   public static function post($name) {
     return $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST[$name]);
   }
+
+  public static function username($u) {
+    return preg_match('/^[-\w\s]+$/i', $u) && Validator::string_length($u, 1, 20);
+  }
+
+  public static function string_length($str, $min = 0, $max = 100) {
+    return strlen($str) >= $min && strlen($str) <= $max;
+  }
 }
