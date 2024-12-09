@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 09, 2024 at 02:58 AM
+-- Generation Time: Dec 09, 2024 at 05:29 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -142,7 +142,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`email`, `password`, `username`, `profile_picture`, `admin`) VALUES
-('100@uob.edu.bh', '$2y$10$KrYz0DBIadbKQqyfpA7tbeeTew3bbYZYQieSWYn4DcRRgOt4h4Zl6', 'Sarah101', '100@uob.edu.bh.jpg', b'0'),
+('100@uob.edu.bh', '$2y$10$KrYz0DBIadbKQqyfpA7tbeeTew3bbYZYQieSWYn4DcRRgOt4h4Zl6', 'Sarah', 'default-pfp.png', b'0'),
 ('200@uob.edu.bh', '$2y$10$DSwi4LYc1iDtFBXz0ziAXuyzCP3E2M3uBmoxZfzDxsYwx7NeGXGZq', '200@uob.edu.bh', 'default-pfp.png', b'1'),
 ('300@uob.edu.bh', '$2y$10$Dn4I.YSZJAZye0dfvpVg7.pI.FcuTrIPPQh/021okesLwYnDuAvTu', '300@uob.edu.bh', 'default-pfp.png', b'0');
 
